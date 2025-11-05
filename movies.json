@@ -1,0 +1,161 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Interestellar",
+      "director": "Christopher Nolan",
+      "year": 2010,
+      "genre": "Scifi",
+      "duration": 120,
+      "rating": 10.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 2,
+      "title": "Inception",
+      "director": "Christopher Nolan",
+      "year": 2010,
+      "genre": "Scifi",
+      "duration": 110,
+      "rating": 10.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 3,
+      "title": "Avengers",
+      "director": "Anthony Russo",
+      "year": 2010,
+      "genre": "Fantasy",
+      "duration": 110,
+      "rating": 10.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 4,
+      "title": "Guardians of the Galaxy",
+      "director": "James Gun",
+      "year": 2010,
+      "genre": "Accion",
+      "duration": 110,
+      "rating": 10.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 6,
+      "title": "Guardians of the Galaxy 2",
+      "director": "James Gun",
+      "year": 2014,
+      "genre": "Accion",
+      "duration": 115,
+      "rating": 10.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 7,
+      "title": "Superman",
+      "director": "James Gun",
+      "year": 2025,
+      "genre": "Fantasy",
+      "duration": 115,
+      "rating": 10.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 8,
+      "title": "Final Destination",
+      "director": "James Wong",
+      "year": 2000,
+      "genre": "Horror",
+      "duration": 95,
+      "rating": 7.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 9,
+      "title": "Esspresso Polar",
+      "director": "Robert Zemeckis",
+      "year": 2004,
+      "genre": "Fantasy",
+      "rating": 7.0,
+      "duration": 95,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 10,
+      "title": "Whiplash",
+      "director": "Damien Chazelle",
+      "year": 2014,
+      "genre": "Drama",
+      "duration": null,
+      "rating": 9.0,
+      "synopsis": null,
+      "price": null,
+      "is_watched": false
+    },
+    {
+      "id": 11,
+      "title": "Esspresso Polar",
+      "director": "Robert Zemeckis",
+      "year": 2004,
+      "genre": "Fantasy",
+      "duration": 95,
+      "rating": 7.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 12,
+      "title": "Grown Ups",
+      "director": "Denis Dugan",
+      "year": 2010,
+      "genre": "Comedy",
+      "duration": 95,
+      "rating": 9.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 13,
+      "title": "Esspresso Polar",
+      "director": "Robert Zemeckis",
+      "year": 2004,
+      "genre": "Fantasy",
+      "duration": 95,
+      "rating": 7.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    },
+    {
+      "id": 14,
+      "title": "Grown Ups 2",
+      "director": "Denis Dugan",
+      "year": 2013,
+      "genre": "Comedy",
+      "duration": 95,
+      "rating": 9.0,
+      "synopsis": "Non Provided",
+      "price": 0.0,
+      "is_watched": true
+    }
+  ],
+  "next_id": 15
+}
