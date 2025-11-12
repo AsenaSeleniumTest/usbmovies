@@ -22,4 +22,13 @@ class Movie(Base):
     is_watched: Mapped[bool] = mapped_column(default=False)
 
 
-
+class Users(Base):
+    """SQLAlchemy Users model representing a user in the system"""
+    __tablename__ = "users"
+    
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    username: Mapped[str]
+    email: Mapped[str]
+    hashed_password: Mapped[str]
+    is_active: Mapped[bool] = mapped_column(default=True)
+    is_admin: Mapped[bool] = mapped_column(default=False)

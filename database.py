@@ -75,7 +75,7 @@ class MovieDatabase:
             if isinstance(next_id_val, int) and next_id_val > 0:
                 self.next_id = next_id_val
             else:
-                self.next_id = (max(self.movies.keys())+1) if self.movies else 1  
+                self.next_id = (max(self.movies.keys())+1) if self.movies else 1
         except Exception as e:
             # if something goes wrong restart
             print(f"[MovieDatabase.load_data] error loading datos: {e}")

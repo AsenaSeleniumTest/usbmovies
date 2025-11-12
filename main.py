@@ -21,7 +21,7 @@ async def root():
 # Step 20 
 @app.post("/movies")
 async def create_movie(payload: MovieCreate):
-    """Endpoint to create a new movieentry  """
+    """Endpoint to create a new movie entry  """
     return {
         "success":True,
         "message":"Movie Received not Stored yet",

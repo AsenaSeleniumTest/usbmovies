@@ -1,6 +1,6 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from mongodb_models import Base
+from sqlalchemy import create_engine,select
+from sqlalchemy.orm import sessionmaker,Session
+from mongodb_models import Movie,Base
 
 #Define session databases
 
@@ -16,3 +16,12 @@ def get_db():
     finally:
         db.close()
         
+class MovieSQLiteDB:
+    """class to handle movie catalog using SQLAlchemy and SQLite""" 
+    def __init__(self):
+        self.db_session: Session = get_db()
+        
+    def get_movie_catalog(self) -> list[dict]:
+        """Retrieve all movies from the database"""
+        movies = select(Movie)
+        return list(self.db_session.scalars(movies))
