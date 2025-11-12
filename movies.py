@@ -45,7 +45,7 @@ async def get_movies_by_year(year: int):
         "total": len(movies)
     }
 ##Adding endpoint to get the list of movies by director Path  parameter
-@router.get("/movies/director/{director}", response_model= MovieListResponse)
+@router.get("/movies/director/{director}", response_model= MovieListResponse, responses={404: {"model": ErrorResponse}})
 async def get_movies_by_director(director: str):
     """Get the movies based on director name"""
     movies_director = db.get_movie_by_director(director)
@@ -59,7 +59,7 @@ async def get_movies_by_director(director: str):
     }
     
 #return movies by Genre path parameter
-@router.get("/movies/genre/{genre}", response_model= MovieListResponse)
+@router.get("/movies/genre/{genre}", response_model= MovieListResponse, responses={404: {"model": ErrorResponse}})
 async def get_movies_by_genre(genre: str):
     """Get the movies base on genre""" 
     movies_genre = db.get_movies_by_genre(genre)
@@ -72,7 +72,7 @@ async def get_movies_by_genre(genre: str):
         "total":len(movies_genre)
     }
     
-@router.get("/movies/search/{text_query}", response_model= MovieListResponse)  
+@router.get("/movies/search/{text_query}", response_model= MovieListResponse, responses={404: {"model": ErrorResponse}})
 async def search_in_movies_title(text_query: str):
     """Endpoint to search movies by text in title"""
     search_results = db.search_movies(text_query)
