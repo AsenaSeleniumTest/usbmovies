@@ -57,6 +57,7 @@ class MovieBase(BaseModel):
         return value.strip()
     
 
+
 #model for updating a movie 
 class MovieUpdate(BaseModel):
     """Model Base for updating a movie entry"""
@@ -88,8 +89,14 @@ class SQLMovieListResponse(BaseModel):
     """Class for response when listing multiple movies from SQLite database"""
     success: bool = Field(..., description = "States if  the API call was successful")
     message: str = Field(..., description  = "Message to the client")
-    data: List[str] = Field(default_factory= list, description = "List of returned movies or None if not applicable")
-    total: int = Field(..., description = "Total number of movies returned")    
+    data: List[MovieBase] = Field(default_factory= list, description = "List of returned movies or None if not applicable")
+    total: int = Field(..., description = "Total number of movies returned")
+    
+class DeleteMovieResponse(BaseModel):
+    """Class model for delete movie responses from the API"""
+    success: bool = Field(...,description =" States if the API call was successful")
+    message: str = Field(..., description = "Messsage to the client")
+    data: Optional[MovieBase] = Field(None, description = "Deleted movie data or None if not applicable")
 # Ends definition for Databasemodel responses
      
 class ErrorResponse(BaseModel):

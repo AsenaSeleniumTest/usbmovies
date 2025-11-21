@@ -5,6 +5,7 @@ from sqldb.db_session import get_db
 from sqldb.movies_repo import MoviesRepository
 from modelos.models import ErrorResponse
 from modelos.models import SQLMovieListResponse
+from modelos.models import DeleteMovieResponse
 
 router2 = APIRouter(tags=["MoviesSQLite"])
 
@@ -38,4 +39,15 @@ def get_all_movies_sqlite(repo: MoviesRepository = Depends(get_movies_repository
         "total": len(movies)
         }
     
+@router2.delete("/moviessqlite/{movie_id}", response_model=DeleteMovieResponse, responses={404: {"model": ErrorResponse}})
+def delete_movie_sqlite(movie_id:int, repo: MoviesRepository = Depends(get_movies_repository)):
+    """Endpoint to delete a movie from SQLlite database by ID"""
+    movie = repo.delete_movie(movie_id)
+    if not movie:
+        raise HTTPException(status_code=404, detail=f"Movie with ID {movie_id} not found")
+    return {
+        "success":True,
+        "message": f"Movie with ID {movie_id} deleted successfully",
+        "data":movie
+        }
      

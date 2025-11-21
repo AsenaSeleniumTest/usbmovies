@@ -5,15 +5,15 @@ from fastapi.exceptions import RequestValidationError
 from config import settings
 from modelos.models import MovieCreate
 from modelos.models import ErrorResponse
+from modelos.sqlitedb_models import Base
 from routers import movies_sqlite_api
 from routers import movies
-from modelos.sqlitedb_models import Base
 from sqldb.db_session import engine
 
 
 #creating instance of FastAPI
 #Step 13 adding settings to FastAPI instance
-# Step 20 Add POST endpoint in main.py
+#Step 20 Add POST endpoint in main.py
 Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Movie Catalog API", version="1.0.0", description="API for managing a basic movie catalog", debug=settings.debug)
 
@@ -21,6 +21,7 @@ app = FastAPI(title="Movie Catalog API", version="1.0.0", description="API for m
 #Step 13 updating the name frome read_root to root and use async function
 @app.get("/")
 async def root():
+    """Root endpoint returning a welcome message"""
     #This is the main endpoint that returns a welcome message
     return {"message": "Welcome to the USBMovie Catalog API!"}
 

@@ -36,12 +36,24 @@ class MoviesRepository:
         return movie
     
     def get_movie_by_year(self, year:int)-> List[MovieModel]:
+        """To return a movie by year"""
         movies = self.db.query(MovieModel).filter(MovieModel.year == year).all()
         return movies
     
-    def get_all_movies(self) -> List[str]:
+    def get_all_movies(self) -> List[MovieModel]:
+        """Return database all movies as a list of dictionaries"""
         movies = self.db.query(MovieModel).all()
         if movies is None or len(movies) ==0:
-            return ["No movies found in the database",]
-        return list(str(movies))
-            
+            return ["No movies found in the database"]
+        return movies
+    
+    def delete_movie(self,movie_id:int) -> MovieModel:
+        """Delete a movie by id"""
+        movie = self.db.query(MovieModel).filter(MovieModel.id == movie_id).first()
+        if movie:
+            self.db.delete(movie)
+            self.db.commit()
+        return movie
+        
+        
+                
