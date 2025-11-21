@@ -1,10 +1,11 @@
 from fastapi import APIRouter, HTTPException
 from database import MovieDatabase
-from models import MovieCreate
-from models import MovieUpdate
-from models import MovieResponse
-from models import MovieListResponse
-from models import ErrorResponse
+from sqldb.MoviesDB import MoviesDB
+from modelos.models import MovieCreate
+from modelos.models import MovieUpdate
+from modelos.models import MovieResponse
+from modelos.models import MovieListResponse
+from modelos.models import ErrorResponse
 
 
 #Step 30 Add GET endpoint to list movies
