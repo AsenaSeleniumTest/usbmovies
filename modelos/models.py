@@ -7,6 +7,7 @@ from pydantic import field_validator
 from pydantic import Field
 
 
+
 #Step 15 creating Movie model
 #step 16 complete the movie class definition
 # Step 17 Update models with custom field descriptions and constraints
@@ -81,7 +82,16 @@ class MovieListResponse(BaseModel):
     message: str = Field(..., description  = "Message to the client")
     data: List[dict] = Field(default_factory= list, description = "List of returned movies or None if not applicable")
     total: int = Field(..., description = "Total number of movies returned")
-    
+
+#model for database sqlite list response
+class SQLMovieListResponse(BaseModel):
+    """Class for response when listing multiple movies from SQLite database"""
+    success: bool = Field(..., description = "States if  the API call was successful")
+    message: str = Field(..., description  = "Message to the client")
+    data: List[str] = Field(default_factory= list, description = "List of returned movies or None if not applicable")
+    total: int = Field(..., description = "Total number of movies returned")    
+# Ends definition for Databasemodel responses
+     
 class ErrorResponse(BaseModel):
     """Class model for error responses from the API """  
     status_code: int = Field(..., description = "HTTP status code of the error")

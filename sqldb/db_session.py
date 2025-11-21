@@ -1,27 +1,32 @@
-from sqlalchemy import create_engine,select
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker,Session
-from mongodb_models import Movie,Base
+from typing import Optional, Generator
+from contextlib import contextmanager
+from modelos.sqlitedb_models import Base
 
 #Define session databases
 
-engine = create_engine("sqlite:///./movies.db", echo=True, future=True)
-Base.metadata.create_all(bind=engine)
-async_session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+#engine = create_engine("sqlite:///./movies.db", echo=True, future=True)
+#Base.metadata.create_all(bind=engine)
+#async_session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-def get_db():
-    """Dependency to get DB session"""
-    db = async_session()
+DATABASE_URL="sqlite:///./movies.db"
+
+engine = create_engine(DATABASE_URL,
+                       echo=True,
+                       future=True,
+                       connect_args={"check_same_thread": False}
+                       )
+
+#create the session local class
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+#dependency injection
+def get_db() -> Generator[Session,None,None]:
+    """Dependency to get the database session"""
+    db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
-        
-class MovieSQLiteDB:
-    """class to handle movie catalog using SQLAlchemy and SQLite""" 
-    def __init__(self):
-        self.db_session: Session = get_db()
-        
-    def get_movie_catalog(self) -> list[dict]:
-        """Retrieve all movies from the database"""
-        movies = select(Movie)
-        return list(self.db_session.scalars(movies))
+            

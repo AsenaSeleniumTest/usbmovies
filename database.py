@@ -131,7 +131,7 @@ class MovieDatabase:
         return movie_list
     
     
-    def  list_movies(self) -> list[dict]:
+    def list_movies(self) -> list[dict]:
         """returns all movies in memory"""
         return list(self.movies.values())
     

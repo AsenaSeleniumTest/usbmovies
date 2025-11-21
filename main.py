@@ -3,12 +3,18 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from config import settings
-from models import MovieCreate
-from models import ErrorResponse
-import movies
+from modelos.models import MovieCreate
+from modelos.models import ErrorResponse
+from routers import movies_sqlite_api
+from routers import movies
+from modelos.sqlitedb_models import Base
+from sqldb.db_session import engine
+
+
 #creating instance of FastAPI
 #Step 13 adding settings to FastAPI instance
 # Step 20 Add POST endpoint in main.py
+Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Movie Catalog API", version="1.0.0", description="API for managing a basic movie catalog", debug=settings.debug)
 
 #defininf main endpoint
@@ -56,8 +62,9 @@ def general_exception_handler(request: Request, exc: Exception):
     """Custom handler for general exceptions"""
     return JSONResponse(
         status_code= status.HTTP_500_INTERNAL_SERVER_ERROR,
-        content = ErrorResponse(status_code= status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc)).model_dump()
+        content = ErrorResponse(status_code= status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(exc),error_type="Could not process data").model_dump()
         
     )
-    
+
+app.include_router(movies_sqlite_api.router2, prefix="/apilite/v1")
 app.include_router(movies.router, prefix="/api/v1")
